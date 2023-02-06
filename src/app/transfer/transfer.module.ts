@@ -4,7 +4,6 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { DeleteComponent } from './delete/delete.component';
-import { AuthService } from '../login/services/auth.service';
 
 
 
@@ -15,7 +14,6 @@ import { AuthService } from '../login/services/auth.service';
     ListComponent,
     DeleteComponent
   ],
-  providers: [AuthService],
   imports: [
     CommonModule
   ]
