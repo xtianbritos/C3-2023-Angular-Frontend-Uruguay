@@ -14,6 +14,7 @@ import { ListInfoComponent } from './list-info/list-info.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [CustomerModule]
 })
 export class CustomerModule { }
