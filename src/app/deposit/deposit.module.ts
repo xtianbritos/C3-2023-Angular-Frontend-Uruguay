@@ -4,6 +4,7 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ListComponent } from './list/list.component';
+import { DepositApiService } from './services/deposit-api.service';
 
 
 
@@ -17,6 +18,7 @@ import { ListComponent } from './list/list.component';
   imports: [
     CommonModule
   ],
+  providers: [DepositApiService],
   exports: [DepositModule]
 })
 export class DepositModule { }
