@@ -4,6 +4,7 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { DeleteComponent } from './delete/delete.component';
+import { TransferApiService } from './services/transfer-api.service';
 
 
 
@@ -14,6 +15,7 @@ import { DeleteComponent } from './delete/delete.component';
     ListComponent,
     DeleteComponent
   ],
+  providers: [TransferApiService],
   imports: [
     CommonModule
   ]
