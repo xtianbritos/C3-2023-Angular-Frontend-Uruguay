@@ -11,8 +11,6 @@ import { AccountModule } from './account/account.module';
 import { CustomerModule } from './customer/customer.module';
 import { DepositModule } from './deposit/deposit.module';
 import { TransferModule } from './transfer/transfer.module';
-import { AccountApiService } from './account/services/api.service';
-import { CustomerApiService } from './customer/services/api.service';
 
 @NgModule({
   declarations: [
@@ -32,10 +30,7 @@ import { CustomerApiService } from './customer/services/api.service';
     TransferModule
 
   ],
-  providers: [
-    AccountApiService,
-    CustomerApiService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
