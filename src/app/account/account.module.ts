@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateComponent } from './create/create.component';
-import { EditComponent } from './edit/edit.component';
-import { DeleteComponent } from './delete/delete.component';
-import { ListComponent } from './list/list.component';
-import { AccountApiService } from './services/api.service';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { EditAccountComponent } from './edit-account/edit-account.component';
+import { ListAccountComponent } from './list-account/list-account.component';
+import { AccountApiService } from './services/account-api.service';
 
 
 
 @NgModule({
   declarations: [
-    CreateComponent,
-    EditComponent,
-    DeleteComponent,
-    ListComponent
+    CreateAccountComponent,
+    EditAccountComponent,
+    ListAccountComponent
   ],
   imports: [
     CommonModule
   ],
-  providers: [
-    AccountApiService
-  ],
-  exports: [AccountModule]
+  providers: [AccountApiService],
+  exports: [CreateAccountComponent,
+    EditAccountComponent,
+    ListAccountComponent]
 })
 export class AccountModule { }

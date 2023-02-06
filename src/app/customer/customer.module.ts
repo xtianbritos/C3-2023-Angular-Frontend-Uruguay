@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditComponent } from './edit/edit.component';
-import { DeleteComponent } from './delete/delete.component';
-import { ListInfoComponent } from './list-info/list-info.component';
-import { CustomerApiService } from './services/api.service';
+import { ListInfoCustomerComponent } from './list-info-customer/list-info-customer.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import { CustomerApiService } from './services/customer-api.service';
 
 
 
 @NgModule({
   declarations: [
-    EditComponent,
-    DeleteComponent,
-    ListInfoComponent
+    ListInfoCustomerComponent,
+    EditCustomerComponent
   ],
   imports: [
     CommonModule
   ],
   providers: [CustomerApiService],
-  exports: [CustomerModule]
+  exports: [
+    ListInfoCustomerComponent,
+    EditCustomerComponent]
 })
 export class CustomerModule { }

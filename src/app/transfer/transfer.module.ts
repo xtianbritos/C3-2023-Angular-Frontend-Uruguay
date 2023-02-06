@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateComponent } from './create/create.component';
-import { EditComponent } from './edit/edit.component';
-import { ListComponent } from './list/list.component';
-import { DeleteComponent } from './delete/delete.component';
 import { TransferApiService } from './services/transfer-api.service';
+import { ListTransferComponent } from './list-transfer/list-transfer.component';
+import { CreateTransferComponent } from './create-transfer/create-transfer.component';
+import { EditTransferComponent } from './edit-transfer/edit-transfer.component';
 
 
 
 @NgModule({
   declarations: [
-    CreateComponent,
-    EditComponent,
-    ListComponent,
-    DeleteComponent
+    ListTransferComponent,
+    CreateTransferComponent,
+    EditTransferComponent
   ],
   providers: [TransferApiService],
-  imports: [
-    CommonModule
+  imports: [CommonModule],
+  exports: [
+    ListTransferComponent,
+    CreateTransferComponent,
+    EditTransferComponent
   ]
 })
 export class TransferModule { }

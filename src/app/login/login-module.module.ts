@@ -19,6 +19,10 @@ import { AuthService } from './services/auth.service';
     MaterialModule,
   ],
   providers: [AuthService],
-  exports: [LoginModule]
+  exports: [
+    SinginComponent,
+    SingupComponent,
+    SingOutComponent,
+  ]
 })
 export class LoginModule { }

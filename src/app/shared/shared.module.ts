@@ -17,6 +17,10 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
     CommonModule,
     MaterialModule,
   ],
-  exports:[ToolbarComponent]
+  exports:[
+    ToolbarComponent,
+    FooterComponent,
+    FilterBarComponent
+  ]
 })
 export class SharedModule { }
