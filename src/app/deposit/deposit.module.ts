@@ -16,6 +16,7 @@ import { ListComponent } from './list/list.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [DepositModule]
 })
 export class DepositModule { }
