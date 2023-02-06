@@ -4,6 +4,7 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ListComponent } from './list/list.component';
+import { AccountApiService } from './services/api.service';
 
 
 
@@ -16,6 +17,9 @@ import { ListComponent } from './list/list.component';
   ],
   imports: [
     CommonModule
+  ],
+  providers: [
+    AccountApiService
   ],
   exports: [AccountModule]
 })
