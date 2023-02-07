@@ -11,10 +11,13 @@ import { AccountModule } from './account/account.module';
 import { CustomerModule } from './customer/customer.module';
 import { DepositModule } from './deposit/deposit.module';
 import { TransferModule } from './transfer/transfer.module';
+import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    EjercicioComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { TransferModule } from './transfer/transfer.module';
     AccountModule,
     CustomerModule,
     DepositModule,
-    TransferModule
+    TransferModule,
+    FormsModule
 
   ],
   providers: [],
