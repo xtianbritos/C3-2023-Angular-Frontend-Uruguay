@@ -28,46 +28,48 @@ export class EjercicioComponent {
   nombresMayuscula: string[] = [];
   nombresCorregidos: string[] = [];
   sumaTelefonos: number = 0;
-
+  
   agregarMayusculas(): void {
-     this.nombresMayuscula = baseCustomers
-     .filter(customer => customer.fullName === "Nombre 1" || customer.fullName === "Nombre 3")
-      .map(customer => customer.fullName.toUpperCase())
+    this.nombresMayuscula = baseCustomers
+    .filter(customer => customer.fullName != undefined || customer.fullName === "Nombre 3")
+    .map(customer => customer.fullName.toUpperCase())
   }
-
+  
   corregirNombres(): void {
     this.nombresCorregidos = this.nombresMayuscula
     .map(name => name.split(' ').map(word => word[0] + word.substring(1).toLowerCase()).join(' '))
   }
-
+  
   sumarTelefonos(): void {
     this.sumaTelefonos = baseCustomers
     .map(customer => customer.phone)
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
   }
-
+  
   convertirFechaEnNumero(fecha: Date): number {
     return fecha.getTime();
   }
-
+  
   convertirNumeroEnFecha(numero: number): Date {
     return new Date(numero);
   }
-
+  
   composicionFunciones(): Date {
     return this.convertirNumeroEnFecha(this.convertirFechaEnNumero(new Date()));
   }
-
+  
   callback(n1: number, n2: number, funcion: (x: number, y:number) => number): number {
     return funcion(n1, n2);
   }
-
-
-  //funcion pura
-  // transform(document: string) {
-  //   from(this.customers).pipe(
-  //     filter(n => n.document === document),
-  //   ).subscribe((data) => this.newData = data)
-  // }
+  
+  nombresCorregidosObservable: string[] = [];
+  
+  transform() {
+    from(baseCustomers).pipe(
+      map(customer => {return customer.fullName}),
+      map(name => name.split(' ').map(word => 
+        word[0].toUpperCase() + word.substring(1).toLowerCase()).join(' '))
+    ).subscribe(data => this.nombresCorregidosObservable.push(data))
+  }
 
 }

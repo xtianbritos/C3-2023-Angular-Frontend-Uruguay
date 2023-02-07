@@ -1,9 +1,18 @@
-<p>Lita de nombres en mayúscula:</p>
 {{agregarMayusculas()}}
 {{corregirNombres()}}
 {{sumarTelefonos()}}
-{{ nombresMayuscula }}
-<p>Lita de nombres en minúscula:</p>
-{{ nombresCorregidos}}
-<p>La suma de los teléfonos es:</p>
-{{ sumaTelefonos }}
+{{transform()}}
+<div class="container">
+
+    <p>Lista de nombres en mayúscula:</p>
+    {{ nombresMayuscula }}
+    <br><br>
+    <p>Lista de nombres en minúscula:</p>
+    {{ nombresCorregidos}}
+    <br><br>
+    <p>La suma de los teléfonos es:</p>
+    {{ sumaTelefonos }}
+    <br><br>
+    <p>Lista de nombre corregidos pero usando from y pipe:</p>
+    {{nombresCorregidosObservable}}
+</div>

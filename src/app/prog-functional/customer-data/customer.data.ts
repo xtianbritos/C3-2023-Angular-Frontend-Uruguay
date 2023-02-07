@@ -10,7 +10,7 @@ export const baseCustomers: Array<CustomerModel> = [
       state: true
     },
     document: "123456-3",
-    fullName: "Nombre 1",
+    fullName: "CHRIstiAN bRITos",
     email: "nombre1@email.com",
     phone: 10,
     password: "52sa",
