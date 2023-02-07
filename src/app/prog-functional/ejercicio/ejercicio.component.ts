@@ -50,6 +50,15 @@ export class EjercicioComponent {
     return fecha.getTime();
   }
 
+  convertirNumeroEnFecha(numero: number): Date {
+    return new Date(numero);
+  }
+
+  composicionFunciones(): Date {
+    return this.convertirNumeroEnFecha(this.convertirFechaEnNumero(new Date()));
+
+  }
+
   //funcion pura
   // transform(document: string) {
   //   from(this.customers).pipe(
