@@ -46,6 +46,9 @@ export class EjercicioComponent {
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
   }
 
+  convertirFechaEnNumero(fecha: Date): number {
+    return fecha.getTime();
+  }
 
   //funcion pura
   // transform(document: string) {
