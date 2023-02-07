@@ -56,8 +56,12 @@ export class EjercicioComponent {
 
   composicionFunciones(): Date {
     return this.convertirNumeroEnFecha(this.convertirFechaEnNumero(new Date()));
-
   }
+
+  callback(n1: number, n2: number, funcion: (x: number, y:number) => number): number {
+    return funcion(n1, n2);
+  }
+
 
   //funcion pura
   // transform(document: string) {
