@@ -28,7 +28,9 @@ export class EjercicioComponent {
   nombresMayuscula: string[] = [];
 
   agregarMayusculas(): void {
-    this.nombresMayuscula = baseCustomers.map(customer => customer.fullName.toUpperCase());
+     this.nombresMayuscula = baseCustomers
+     .filter(customer => customer.fullName === "Nombre 1" || customer.fullName === "Nombre 3")
+      .map(customer => customer.fullName.toUpperCase())
   }
 
   
