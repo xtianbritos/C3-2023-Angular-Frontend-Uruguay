@@ -27,6 +27,7 @@ export class EjercicioComponent {
 
   nombresMayuscula: string[] = [];
   nombresCorregidos: string[] = [];
+  sumaTelefonos: number = 0;
 
   agregarMayusculas(): void {
      this.nombresMayuscula = baseCustomers
@@ -39,8 +40,11 @@ export class EjercicioComponent {
     .map(name => name.split(' ').map(word => word[0] + word.substring(1).toLowerCase()).join(' '))
   }
 
-  
-
+  sumarTelefonos(): void {
+    this.sumaTelefonos = baseCustomers
+    .map(customer => customer.phone)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  }
 
 
   //funcion pura
