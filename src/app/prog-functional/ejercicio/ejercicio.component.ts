@@ -29,14 +29,20 @@ export class EjercicioComponent implements OnInit{
   this.sumarTelefonos();
   this.transform();
   this.transformEmail();
+  this.transformCustomers();
  }
 
-  nombresMayuscula: string[] = [];
-  nombresCorregidos: string[] = [];
-  sumaTelefonos: number = 0;
+ nombresMayuscula: string[] = [];
+ nombresCorregidos: string[] = [];
+ sumaTelefonos: number = 0;
+ nombresCorregidosObservable: string[] = [];
+ emails: string[] = [];
+ customersDocument: string[] = [];
   
-  agregarMayusculas(): void {
-    this.nombresMayuscula = baseCustomers
+
+ //Funciones sin usar observables
+ agregarMayusculas(): void {
+   this.nombresMayuscula = baseCustomers
     .filter(customer => customer.fullName != undefined || customer.fullName === "Nombre 3")
     .map(customer => customer.fullName.toUpperCase())
   }
@@ -52,24 +58,29 @@ export class EjercicioComponent implements OnInit{
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
   }
   
+
+  //Función pura
   convertirFechaEnNumero(fecha: Date): number {
     return fecha.getTime();
   }
   
+  //Funcion para usar junto a la pura en la composición
   convertirNumeroEnFecha(numero: number): Date {
     return new Date(numero);
   }
   
+  //Composición de funciones
   composicionFunciones(): Date {
     return this.convertirNumeroEnFecha(this.convertirFechaEnNumero(new Date()));
   }
   
+  //Callback
   callback(n1: number, n2: number, funcion: (x: number, y:number) => number): number {
     return funcion(n1, n2);
   }
+
   
-  nombresCorregidosObservable: string[] = [];
-  
+  //Funciones que usan observables
   transform() {
     from(baseCustomers).pipe(
       map(customer => {return customer.fullName}),
@@ -78,13 +89,18 @@ export class EjercicioComponent implements OnInit{
     ).subscribe(data => this.nombresCorregidosObservable.push(data))
   }
 
-  emails: string[] = [];
-
   transformEmail() {
     from(baseCustomers).pipe(
       filter(customer => customer.state === true),
       map(name => name.email)
     ).subscribe(data => this.emails.push(data))
+  }
+
+  transformCustomers() {
+    from(baseCustomers).pipe(
+      filter(customer => customer.documentType.name === 'Pasaporte'),
+      map(customer => customer.document)
+    ).subscribe(data => this.customersDocument.push(data))
   }
 
 }
