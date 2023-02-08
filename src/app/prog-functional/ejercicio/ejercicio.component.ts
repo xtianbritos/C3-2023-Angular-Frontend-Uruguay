@@ -28,6 +28,7 @@ export class EjercicioComponent implements OnInit{
   this.corregirNombres();
   this.sumarTelefonos();
   this.transform();
+  this.transformEmail();
  }
 
   nombresMayuscula: string[] = [];
@@ -75,6 +76,15 @@ export class EjercicioComponent implements OnInit{
       map(name => name.split(' ').map(word => 
         word[0].toUpperCase() + word.substring(1).toLowerCase()).join(' '))
     ).subscribe(data => this.nombresCorregidosObservable.push(data))
+  }
+
+  emails: string[] = [];
+
+  transformEmail() {
+    from(baseCustomers).pipe(
+      filter(customer => customer.state === true),
+      map(name => name.email)
+    ).subscribe(data => this.emails.push(data))
   }
 
 }
