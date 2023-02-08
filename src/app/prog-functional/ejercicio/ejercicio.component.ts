@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { baseCustomers } from '../customer-data/customer.data';
 import { CustomerModel } from '../../interfaces/Customer.interface';
 import { filter, from, map } from 'rxjs';
@@ -8,22 +8,27 @@ import { filter, from, map } from 'rxjs';
   templateUrl: './ejercicio.component.html',
   styleUrls: ['./ejercicio.component.scss']
 })
-export class EjercicioComponent {
-
-
+export class EjercicioComponent implements OnInit{
+  
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
    * Se deben usar 2 operadores funcionales para cada transformacion.
-   *
-   * Se debe crear una funcion pura, a demas de la que dio el coach
-   *
-   * A partir de la funcion pura crear una composicion de funciones y
-   * una funcion de orden superior o un callback.
-   *
-   * Funcion de orden superior: Tomar una o más funciones como entrada y Devolver una función como salida
-   * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
-   */
-
+  *
+  * Se debe crear una funcion pura, a demas de la que dio el coach
+  *
+  * A partir de la funcion pura crear una composicion de funciones y
+  * una funcion de orden superior o un callback.
+  *
+  * Funcion de orden superior: Tomar una o más funciones como entrada y Devolver una función como salida
+  * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
+  */
+ 
+ ngOnInit(): void {
+  this.agregarMayusculas();
+  this.corregirNombres();
+  this.sumarTelefonos();
+  this.transform();
+ }
 
   nombresMayuscula: string[] = [];
   nombresCorregidos: string[] = [];
