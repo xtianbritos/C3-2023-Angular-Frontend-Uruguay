@@ -1,14 +1,31 @@
 <div class="container">
 
-    <p>Lista de nombres en mayúscula:</p>
-    {{ nombresMayuscula }}
-    <br><br>
-    <p>Lista de nombres en minúscula:</p>
-    {{ nombresCorregidos}}
-    <br><br>
-    <p>La suma de los teléfonos es:</p>
-    {{ sumaTelefonos }}
-    <br><br>
-    <p>Lista de nombre corregidos pero usando from y pipe:</p>
-    {{nombresCorregidosObservable}}
+    <ul class="list-group">
+        <li class="list-group-item active">Lista de nombres en mayúscula</li>
+        <span *ngFor="let nombre of nombresMayuscula">
+            <li class="list-group-item">{{nombre}}</li>
+        </span>
+    </ul>
+    <br>
+
+    <ul class="list-group">
+        <li class="list-group-item active">Lista de nombres en minúscula</li>
+        <span *ngFor="let nombre of nombresCorregidos">
+            <li class="list-group-item">{{nombre}}</li>
+        </span>
+    </ul>
+    <br>
+
+    <ul class="list-group">
+        <li class="list-group-item active">Suma de los teléfonos</li>
+        <li class="list-group-item">{{sumaTelefonos}}</li>
+    </ul>
+    <br>
+
+    <ul class="list-group">
+        <li class="list-group-item active">Lista de nombre corregidos pero usando from y pipe</li>
+        <span *ngFor="let nombre of nombresCorregidosObservable">
+            <li class="list-group-item">{{nombre}}</li>
+        </span>
+    </ul>
 </div>
