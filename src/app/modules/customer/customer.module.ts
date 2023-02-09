@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListInfoCustomerComponent } from './list-info-customer/list-info-customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { CustomerApiService } from './services/customer-api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -12,7 +13,7 @@ import { CustomerApiService } from './services/customer-api.service';
     EditCustomerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, HttpClientModule,
   ],
   providers: [CustomerApiService],
   exports: [
