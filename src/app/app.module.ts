@@ -13,11 +13,13 @@ import { DepositModule } from './deposit/deposit.module';
 import { TransferModule } from './transfer/transfer.module';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EjercicioComponent
+    EjercicioComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
