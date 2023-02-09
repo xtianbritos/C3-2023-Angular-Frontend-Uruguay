@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-singup',
@@ -6,5 +8,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./singup.component.scss']
 })
 export class SingupComponent {
+
+  email = '';
+  password = '';
+
+  constructor(private router: Router, private auth: AuthService) {}
+
+  signUp(): void {
+    let user = {
+      id: "asd12a1s2s",
+      documentType: {
+        id: "a1s5s5e",
+        name: "Cedula",
+        state: true
+      },
+      document: "4993495-7",
+      fullName: "Christian Britos",
+      email: this.email,
+      phone: 10,
+      password: this.password,
+      state: true
+    }
+
+    this.auth.signedUpUsers.push(user);
+
+    this.auth.userLogged = true;
+  }
+
+  redirectToSomewhere() {
+    this.router.navigate(['not-found']);
+  }
 
 }

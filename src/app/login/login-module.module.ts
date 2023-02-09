@@ -7,6 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { AuthService } from './services/auth.service';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ApiSecurityService } from './services/api-security.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +21,7 @@ import { ApiSecurityService } from './services/api-security.service';
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
   ],
   providers: [AuthService, ApiSecurityService],
   exports: [
