@@ -5,6 +5,7 @@ import { SingupComponent } from './singup/singup.component';
 import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
 import { AuthService } from './services/auth.service';
+import { MainPageComponent } from './main-page/main-page.component';
 
 
 
@@ -13,6 +14,7 @@ import { AuthService } from './services/auth.service';
     SinginComponent,
     SingupComponent,
     SingOutComponent,
+    MainPageComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { AuthService } from './services/auth.service';
   exports: [
     SinginComponent,
     SingupComponent,
+    MainPageComponent,
     SingOutComponent,
   ]
 })
