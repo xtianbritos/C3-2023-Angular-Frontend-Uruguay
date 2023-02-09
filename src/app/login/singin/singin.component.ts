@@ -31,7 +31,7 @@ export class SinginComponent {
     }
     alert('User signed in successfully')
     this.auth.userLogged = true;
-    this.router.navigate(['not-found']);
+    this.router.navigate(['customer']);
   }
 
 }
