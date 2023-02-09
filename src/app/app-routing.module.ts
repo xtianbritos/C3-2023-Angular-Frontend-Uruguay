@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SingupComponent } from './login/singup/singup.component';
-import { SinginComponent } from './login/singin/singin.component';
-import { MainPageComponent } from './login/main-page/main-page.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthGuard } from './guards/auth.guard';
-import { SignedInGuard } from './guards/signed-in.guard';
-import { ListInfoCustomerComponent } from './customer/list-info-customer/list-info-customer.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { AuthGuard } from "./guards/auth.guard";
+import { SignedInGuard } from "./guards/signed-in.guard";
+import { ListInfoCustomerComponent } from "./modules/customer/list-info-customer/list-info-customer.component";
+import { MainPageComponent } from "./modules/login/main-page/main-page.component";
+import { SinginComponent } from "./modules/login/singin/singin.component";
+import { SingupComponent } from "./modules/login/singup/singup.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'main', pathMatch: 'full'},

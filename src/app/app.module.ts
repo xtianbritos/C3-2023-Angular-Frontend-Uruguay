@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { LoginModule } from './login/login-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
-import { AccountModule } from './account/account.module';
-import { CustomerModule } from './customer/customer.module';
-import { DepositModule } from './deposit/deposit.module';
-import { TransferModule } from './transfer/transfer.module';
+import { MaterialModule } from './modules/material/material.module';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 import { FormsModule } from '@angular/forms';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AccountModule } from './modules/account/account.module';
+import { CustomerModule } from './modules/customer/customer.module';
+import { DepositModule } from './modules/deposit/deposit.module';
+import { LoginModule } from './modules/login/login-module.module';
+import { TransferModule } from './modules/transfer/transfer.module';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [

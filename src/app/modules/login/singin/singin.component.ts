@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { AuthService } from '../services/auth.service';
 
 @Component({
