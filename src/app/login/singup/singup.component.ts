@@ -32,11 +32,8 @@ export class SingupComponent {
 
     this.auth.signedUpUsers.push(user);
 
-    this.auth.userLogged = true;
-  }
+    this.router.navigate(['signin']);
 
-  redirectToSomewhere() {
-    this.router.navigate(['not-found']);
   }
 
 }

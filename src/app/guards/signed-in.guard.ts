@@ -6,7 +6,7 @@ import { AuthService } from '../login/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class SignedInGuard implements CanActivate {
   
   constructor(private auth: AuthService, private router: Router) {
   }
@@ -14,9 +14,9 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      if (!this.auth.userLogged) {
-        alert('You must login to access')
-        return this.router.navigate(['/signin']).then(() => false);
+      if (this.auth.userLogged) {
+        alert('You are already logged in')
+        return this.router.navigate(['/not-found']).then(() => false);
       }
       return true;
   }

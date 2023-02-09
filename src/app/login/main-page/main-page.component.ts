@@ -17,4 +17,5 @@ export class MainPageComponent {
   redirectToSignIn() {
     this.router.navigate(['signin']);
   }
+  
 }

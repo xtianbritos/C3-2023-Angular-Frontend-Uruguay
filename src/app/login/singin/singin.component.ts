@@ -26,9 +26,12 @@ export class SinginComponent {
     );
 
     if(userExisting === -1 ) {
+      alert('Wrong password or email');
       throw new Error('Wrong password or email');
     }
+    alert('User signed in successfully')
     this.auth.userLogged = true;
+    this.router.navigate(['not-found']);
   }
 
 }
