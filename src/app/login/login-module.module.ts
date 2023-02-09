@@ -6,6 +6,7 @@ import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
 import { AuthService } from './services/auth.service';
 import { MainPageComponent } from './main-page/main-page.component';
+import { ApiSecurityService } from './services/api-security.service';
 
 
 
@@ -20,7 +21,7 @@ import { MainPageComponent } from './main-page/main-page.component';
     CommonModule,
     MaterialModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, ApiSecurityService],
   exports: [
     SinginComponent,
     SingupComponent,
