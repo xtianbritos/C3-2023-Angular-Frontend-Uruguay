@@ -4,6 +4,8 @@ import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { AuthService } from '../services/auth.service';
 import { CustomerApiService } from '../../customer/services/customer-api.service';
 import { HttpClient } from '@angular/common/http';
+import { LoginModel } from '../../../interfaces/logininterface';
+import { ApiSecurityService } from '../services/api-security.service';
 
 @Component({
   selector: 'app-singin',
@@ -19,6 +21,7 @@ export class SinginComponent implements OnInit{
     private router: Router,
     private auth: AuthService,
     private customerApi: CustomerApiService,
+    private securityApi: ApiSecurityService,
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +33,7 @@ export class SinginComponent implements OnInit{
   }
 
   signIn(): void {
-    let userExisting = this.auth.signedUpUsers.find(user =>
+    let userExisting: CustomerModel | undefined = this.auth.signedUpUsers.find(user =>
       user.email === this.email &&
       user.password === this.password
     );
@@ -40,9 +43,13 @@ export class SinginComponent implements OnInit{
       throw new Error('Wrong password or email');
     }
     alert('User signed in successfully')
-    this.auth.userLogged = true;
+    let user: LoginModel = {
+      username: userExisting.email,
+      password: userExisting.password
+    }
+    this.securityApi.signIn(user);
+
     this.auth.signedUpUser = userExisting;
-    this.router.navigate(['customer']);
   }
 
 }
