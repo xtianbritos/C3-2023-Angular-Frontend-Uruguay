@@ -6,6 +6,8 @@ import { CustomerApiService } from '../../customer/services/customer-api.service
 import { DocumentTypeModel, CustomerModel } from '../../../interfaces/Customer.interface';
 import { RegisterModel } from '../../../interfaces/register.interface';
 import { AccountTypeModel } from 'src/app/interfaces/account-type.model';
+import { AccountApiService } from '../../account/services/account-api.service';
+import { ApiSecurityService } from '../services/api-security.service';
 
 @Component({
   selector: 'app-singup',
@@ -28,7 +30,9 @@ export class SingupComponent implements OnInit{
   constructor(
     private router: Router,
     private auth: AuthService,
-    private customerApi: CustomerApiService
+    private customerApi: CustomerApiService,
+    private accountApi: AccountApiService,
+    private securityApi: ApiSecurityService,
   ) {}
 
   ngOnInit(): void {
@@ -39,8 +43,8 @@ export class SingupComponent implements OnInit{
 
   signUp(): void {
     let user: RegisterModel = {
-      accountType: this.accountTypeSelected,
-      documentType: this.documentTypeSelected,
+      accountTypeId: this.accountTypeSelected,
+      documentTypeId: this.documentTypeSelected,
       document: this.document,
       fullName: this.fullName,
       email: this.email,
@@ -48,7 +52,7 @@ export class SingupComponent implements OnInit{
       password: this.password,
     }
 
-    this.customerApi.postCustomer(user);
+    this.securityApi.signUp(user);
 
     this.router.navigate(['signin']);
   }

@@ -26,10 +26,9 @@
           <label for="exampleInputPassword1" class="form-label">Account type</label>
           <select
           class="form-select"
-          aria-label="Default select example"
           name="signup-account-type"
           [(ngModel)]="accountTypeSelected">
-            <option *ngFor="let type of listAccountTypes" [ngValue]="type.id">{{type.name}}</option>
+            <option *ngFor="let accType of listAccountTypes" [ngValue]="accType.id">{{accType.name}}</option>
           </select>
         </div>
 
@@ -37,10 +36,9 @@
           <label for="exampleInputPassword1" class="form-label">Document type</label>
           <select
           class="form-select"
-          aria-label="Default select example"
           name="signup-document-type"
           [(ngModel)]="documentTypeSelected">
-            <option *ngFor="let type of listDocumentTypes" [ngValue]="type.id">{{type.name}}</option>
+            <option *ngFor="let docType of listDocumentTypes" [ngValue]="docType.id">{{docType.name}}</option>
           </select>
         </div>
 

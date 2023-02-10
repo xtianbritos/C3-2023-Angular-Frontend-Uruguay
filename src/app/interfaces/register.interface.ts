@@ -1,6 +1,6 @@
 export interface RegisterModel {
-  accountType: string;
-  documentType: string;
+  accountTypeId: string;
+  documentTypeId: string;
   document: string;
   fullName: string;
   email: string;
