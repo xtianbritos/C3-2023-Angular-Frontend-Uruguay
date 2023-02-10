@@ -8,6 +8,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ApiSecurityService } from './services/api-security.service';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { CustomerApiService } from '../customer/services/customer-api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,8 +24,13 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     MaterialModule,
     FormsModule,
+    HttpClientModule,
   ],
-  providers: [AuthService, ApiSecurityService],
+  providers: [
+    AuthService,
+    ApiSecurityService,
+    CustomerApiService,
+  ],
   exports: [
     SinginComponent,
     SingupComponent,

@@ -12,7 +12,7 @@ export class CustomerApiService {
 
   getCustomers(): void{
     this.http
-    .get<CustomerModel[]>('http://localhost:3000/customer')
-    .subscribe(customers => this.atuh.signedUpUsers = customers);
+    .get<CustomerModel[]>('http://localhost:3000/customer/')
+    .subscribe(users => users.map(user => this.atuh.signedUpUsers.push(user)));
   }
 }

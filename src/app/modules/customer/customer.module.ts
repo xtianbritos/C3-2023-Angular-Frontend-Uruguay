@@ -4,6 +4,8 @@ import { ListInfoCustomerComponent } from './list-info-customer/list-info-custom
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { CustomerApiService } from './services/customer-api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../login/services/auth.service';
 
 
 
@@ -13,9 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
     EditCustomerComponent
   ],
   imports: [
-    CommonModule, HttpClientModule,
+    CommonModule, HttpClientModule, FormsModule
   ],
-  providers: [CustomerApiService],
+  providers: [CustomerApiService, AuthService, AuthService],
   exports: [
     ListInfoCustomerComponent,
     EditCustomerComponent]

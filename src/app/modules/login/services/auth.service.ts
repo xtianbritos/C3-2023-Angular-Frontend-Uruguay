@@ -10,6 +10,8 @@ export class AuthService {
   
   signedUpUsers: CustomerModel[] = [];
 
+  signedUpUser: Object = {};
+
   constructor() { }
 
 
