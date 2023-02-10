@@ -14,7 +14,7 @@ export class SignedInGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      if (this.auth.userLogged) {
+      if (localStorage.getItem('jwt')) {
         alert('You are already logged in')
         return this.router.navigate(['/not-found']).then(() => false);
       }
