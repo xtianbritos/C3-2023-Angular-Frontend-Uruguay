@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiSecurityService } from '../services/api-security.service';
 
 @Component({
   selector: 'app-sing-out',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./sing-out.component.scss']
 })
 export class SingOutComponent {
+
+  constructor(private securityApi: ApiSecurityService) {}
+
+  signout() {
+    this.securityApi.signOut();
+  }
 
 }

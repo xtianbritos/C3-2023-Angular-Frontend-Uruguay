@@ -38,7 +38,10 @@ export class ApiSecurityService {
       localStorage.setItem('jwt', token.jwt);
       this.router.navigate(['customer']);
     });
-
   }
-
+  
+  signOut(): void {
+    localStorage.removeItem('jwt');
+    this.router.navigate(['signin']);
+  }
 }

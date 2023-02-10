@@ -13,7 +13,7 @@ import { CustomerModule } from './modules/customer/customer.module';
 import { DepositModule } from './modules/deposit/deposit.module';
 import { LoginModule } from './modules/login/login-module.module';
 import { TransferModule } from './modules/transfer/transfer.module';
-import { SharedModule } from './components/shared/shared.module';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { SharedModule } from './components/shared/shared.module';
     CustomerModule,
     DepositModule,
     TransferModule,
+    SharedModule,
     FormsModule
 
   ],
