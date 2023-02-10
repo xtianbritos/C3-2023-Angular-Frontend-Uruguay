@@ -1,36 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { CustomerApiService } from '../../customer/services/customer-api.service';
+import { DocumentTypeModel } from '../../../interfaces/Customer.interface';
 
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
   styleUrls: ['./singup.component.scss']
 })
-export class SingupComponent {
+export class SingupComponent implements OnInit{
+
+  documentTypes: DocumentTypeModel[] = this.auth.documentTypes;
 
   email = '';
   password = '';
+  fullName = '';
+  document = '';
+  phone = '';
+  documentType = ''
 
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private customerApi: CustomerApiService
+  ) {}
+
+  ngOnInit(): void {
+    this.customerApi.getDocumentTypes();
+  }
 
   signUp(): void {
     let user = {
-      id: "asd12a1s2s",
-      documentType: {
-        id: "a1s5s5e",
-        name: "Cedula",
-        state: true
-      },
-      document: "4993495-7",
-      fullName: "Christian Britos",
+      documentType: this.documentType,
+      document: this.document,
+      fullName: this.fullName,
       email: this.email,
-      phone: 10,
+      phone: this.phone,
       password: this.password,
-      state: true
     }
 
-    this.auth.signedUpUsers.push(user);
+    this.customerApi.postCustomer(user);
 
     this.router.navigate(['signin']);
 

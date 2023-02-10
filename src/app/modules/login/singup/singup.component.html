@@ -21,6 +21,44 @@
             [(ngModel)]="password">
         </div>
 
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Document type</label>
+          <select
+          class="form-select"
+          aria-label="Default select example"
+          name="signup-document-type"
+          [(ngModel)]="documentType">
+            <option *ngFor="let type of documentTypes" [ngValue]="type.id">{{type.name}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Document</label>
+          <input
+            type="password"
+            class="form-control"
+            name="signup-document"
+            [(ngModel)]="document">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Full name</label>
+          <input
+            type="password"
+            class="form-control"
+            name="signup-full-name"
+            [(ngModel)]="fullName">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Phone</label>
+          <input
+            type="password"
+            class="form-control"
+            name="signup-phone"
+            [(ngModel)]="phone">
+        </div>
+
         <button type="button" class="btn btn-success" (click)="signUp()">Sign up</button>
 
     </form>
