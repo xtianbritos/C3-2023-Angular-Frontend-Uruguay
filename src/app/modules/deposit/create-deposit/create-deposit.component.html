@@ -1,1 +1,26 @@
-<p>create-deposit works!</p>
+<div class="container">
+    <form>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Account</label>
+          <select
+          class="form-select"
+          name="deposit-account-type"
+          [(ngModel)]="accountSelected">
+            <option *ngFor="let account of listAccount" [ngValue]="account.id">{{account.id}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Money</label>
+          <input
+            type="number"
+            class="form-control"
+            name="deposit-money"
+            [(ngModel)]="money">
+        </div>
+
+        <button type="button" class="btn btn-success" (click)="createDeposit()">Deposit</button>
+
+    </form>
+</div>

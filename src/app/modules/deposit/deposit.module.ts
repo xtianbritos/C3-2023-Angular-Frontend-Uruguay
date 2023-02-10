@@ -4,6 +4,8 @@ import { DepositApiService } from './services/deposit-api.service';
 import { ListDepositComponent } from './list-deposit/list-deposit.component';
 import { EditDepositComponent } from './edit-deposit/edit-deposit.component';
 import { CreateDepositComponent } from './create-deposit/create-deposit.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -14,7 +16,9 @@ import { CreateDepositComponent } from './create-deposit/create-deposit.componen
     CreateDepositComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [DepositApiService],
   exports: [

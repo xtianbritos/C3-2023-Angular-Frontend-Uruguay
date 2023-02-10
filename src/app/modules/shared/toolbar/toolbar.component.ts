@@ -16,4 +16,8 @@ export class ToolbarComponent {
     this.router.navigate(['list-accounts']);
   }
 
+  goToDeposit() {
+    this.router.navigate(['deposit']);
+  }
+
 }
