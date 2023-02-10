@@ -4,6 +4,7 @@ import { MaterialModule } from "src/app/modules/material/material.module";
 import { LoginModule } from "../login/login-module.module";
 import { FooterComponent } from "./footer/footer.component";
 import { ToolbarComponent } from "./toolbar/toolbar.component";
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,6 +16,7 @@ import { ToolbarComponent } from "./toolbar/toolbar.component";
     exports: [
         ToolbarComponent,
         FooterComponent,
+        RouterModule,
     ],
     imports: [
         CommonModule,

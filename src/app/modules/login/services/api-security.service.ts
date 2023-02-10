@@ -52,6 +52,7 @@ export class ApiSecurityService {
       .subscribe(res => {
         if(res) {
           localStorage.removeItem('jwt');
+          localStorage.removeItem('current-customer-id');
           alert('token removido');
           this.router.navigate(['signin']);
         }

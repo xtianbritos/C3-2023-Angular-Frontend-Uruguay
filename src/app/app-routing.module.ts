@@ -7,6 +7,7 @@ import { ListInfoCustomerComponent } from "./modules/customer/list-info-customer
 import { MainPageComponent } from "./modules/login/main-page/main-page.component";
 import { SinginComponent } from "./modules/login/singin/singin.component";
 import { SingupComponent } from "./modules/login/singup/singup.component";
+import { ListAccountComponent } from './modules/account/list-account/list-account.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'main', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'signin', component: SinginComponent, canActivate: [SignedInGuard]},
   {path: 'signup', component: SingupComponent, canActivate: [SignedInGuard]},
   {path: 'customer', component: ListInfoCustomerComponent, canActivate: [AuthGuard]},
+  {path: 'list-accounts', component: ListAccountComponent, canActivate: [AuthGuard]},
   {path: 'not-found', component: NotFoundComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'not-found'},
 ];
