@@ -10,16 +10,16 @@ import { DocumentTypeModel } from '../../../interfaces/Customer.interface';
   styleUrls: ['./singup.component.scss']
 })
 export class SingupComponent implements OnInit{
-
-  documentTypes: DocumentTypeModel[] = this.auth.documentTypes;
-
+  
   email = '';
   password = '';
   fullName = '';
   document = '';
   phone = '';
-  documentType = ''
-
+  documentTypeSelected = ''
+  
+  listDocumentTypes: DocumentTypeModel[] = [];
+ 
   constructor(
     private router: Router,
     private auth: AuthService,
@@ -27,12 +27,16 @@ export class SingupComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.customerApi.getDocumentTypes();
+    this.customerApi.getDocumentTypes().subscribe(types => {
+      console.log(types);
+      this.listDocumentTypes = types});
+    console.log(this.listDocumentTypes);
   }
+  
 
   signUp(): void {
     let user = {
-      documentType: this.documentType,
+      documentType: this.documentTypeSelected,
       document: this.document,
       fullName: this.fullName,
       email: this.email,
@@ -43,7 +47,6 @@ export class SingupComponent implements OnInit{
     this.customerApi.postCustomer(user);
 
     this.router.navigate(['signin']);
-
   }
 
 }

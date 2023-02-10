@@ -8,8 +8,8 @@
             class="form-control"
             aria-describedby="emailHelp"
             name="signup-email"
-            [(ngModel)]="email">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            [(ngModel)]="email"
+            required>
         </div>
 
         <div class="mb-3">
@@ -18,7 +18,8 @@
             type="password"
             class="form-control"
             name="signup-password"
-            [(ngModel)]="password">
+            [(ngModel)]="password"
+            required>
         </div>
 
         <div class="mb-3">
@@ -27,15 +28,15 @@
           class="form-select"
           aria-label="Default select example"
           name="signup-document-type"
-          [(ngModel)]="documentType">
-            <option *ngFor="let type of documentTypes" [ngValue]="type.id">{{type.name}}</option>
+          [(ngModel)]="documentTypeSelected">
+            <option *ngFor="let type of listDocumentTypes" [ngValue]="type.id">{{type.name}}</option>
           </select>
         </div>
 
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Document</label>
           <input
-            type="password"
+            type="text"
             class="form-control"
             name="signup-document"
             [(ngModel)]="document">
@@ -44,7 +45,7 @@
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Full name</label>
           <input
-            type="password"
+            type="text"
             class="form-control"
             name="signup-full-name"
             [(ngModel)]="fullName">
@@ -53,7 +54,7 @@
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Phone</label>
           <input
-            type="password"
+            type="tel"
             class="form-control"
             name="signup-phone"
             [(ngModel)]="phone">
