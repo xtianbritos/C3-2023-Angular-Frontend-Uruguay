@@ -41,7 +41,23 @@ export class ApiSecurityService {
   }
   
   signOut(): void {
-    localStorage.removeItem('jwt');
-    this.router.navigate(['signin']);
+
+    if(localStorage.getItem('jwt') != null) {
+      
+      let token = {
+        jwt: localStorage.getItem('jwt')
+      }
+
+      this.http.post<boolean>('http://localhost:3000/security/signout', token, this.options)
+      .subscribe(res => {
+        if(res) {
+          localStorage.removeItem('jwt');
+          alert('token removido');
+          this.router.navigate(['signin']);
+        }
+      });
+    }
+    
+
   }
 }
