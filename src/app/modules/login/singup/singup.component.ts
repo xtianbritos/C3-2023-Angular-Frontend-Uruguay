@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AuthService } from '../services/auth.service';
 import { CustomerApiService } from '../../customer/services/customer-api.service';
-import { DocumentTypeModel } from '../../../interfaces/Customer.interface';
+import { DocumentTypeModel, CustomerModel } from '../../../interfaces/Customer.interface';
+import { RegisterModel } from '../../../interfaces/register.interface';
+import { AccountTypeModel } from 'src/app/interfaces/account-type.model';
 
 @Component({
   selector: 'app-singup',
@@ -16,9 +19,11 @@ export class SingupComponent implements OnInit{
   fullName = '';
   document = '';
   phone = '';
+  accountTypeSelected = ''
   documentTypeSelected = ''
   
   listDocumentTypes: DocumentTypeModel[] = [];
+  listAccountTypes: AccountTypeModel[] = [];
  
   constructor(
     private router: Router,
@@ -27,15 +32,14 @@ export class SingupComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.customerApi.getDocumentTypes().subscribe(types => {
-      console.log(types);
-      this.listDocumentTypes = types});
-    console.log(this.listDocumentTypes);
+    this.customerApi.getDocumentTypes().subscribe(types => {this.listDocumentTypes = types});
+    this.accountApi.getAccountTypes().subscribe(types => {this.listAccountTypes = types});
   }
   
 
   signUp(): void {
-    let user = {
+    let user: RegisterModel = {
+      accountType: this.accountTypeSelected,
       documentType: this.documentTypeSelected,
       document: this.document,
       fullName: this.fullName,

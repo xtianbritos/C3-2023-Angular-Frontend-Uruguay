@@ -23,6 +23,17 @@
         </div>
 
         <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Account type</label>
+          <select
+          class="form-select"
+          aria-label="Default select example"
+          name="signup-account-type"
+          [(ngModel)]="accountTypeSelected">
+            <option *ngFor="let type of listAccountTypes" [ngValue]="type.id">{{type.name}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Document type</label>
           <select
           class="form-select"

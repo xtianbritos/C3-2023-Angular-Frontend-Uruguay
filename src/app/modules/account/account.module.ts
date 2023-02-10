@@ -4,6 +4,8 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { ListAccountComponent } from './list-account/list-account.component';
 import { AccountApiService } from './services/account-api.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +16,9 @@ import { AccountApiService } from './services/account-api.service';
     ListAccountComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [AccountApiService],
   exports: [CreateAccountComponent,
