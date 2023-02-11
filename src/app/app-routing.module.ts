@@ -13,7 +13,7 @@ import { CreateDepositComponent } from './modules/deposit/create-deposit/create-
 
 const routes: Routes = [
   {path: '', redirectTo: 'login/main', pathMatch: 'full'},
-  {path: 'not-found', component: NotFoundComponent, canActivate: [AuthGuard]},
+  {path: 'not-found', component: NotFoundComponent},
 
   {
     path: 'account',

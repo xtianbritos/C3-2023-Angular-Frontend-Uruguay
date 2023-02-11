@@ -46,7 +46,6 @@ export class SinginComponent implements OnInit{
     this.securityApi.signIn(user);
 
     localStorage.setItem("current-customer-id", userExisting.id);
-    alert(userExisting.id);
   }
 
 }

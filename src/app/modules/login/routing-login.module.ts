@@ -10,8 +10,8 @@ const routes: Routes = [
     path: '',
     children: [
       {path: 'main', component: MainPageComponent},
-      {path: 'signin', component: SinginComponent}, 
-      {path: 'signup', component: SingupComponent},
+      {path: 'signin', component: SinginComponent, canActivate: [SignedInGuard]},
+      {path: 'signup', component: SingupComponent, canActivate: [SignedInGuard]},
     ]
   }
 ];

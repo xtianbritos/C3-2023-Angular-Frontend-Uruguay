@@ -4,7 +4,7 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 import { ListInfoCustomerComponent } from './list-info-customer/list-info-customer.component';
 
 const routes: Routes = [
-  {path: 'customer', component: ListInfoCustomerComponent},
+  {path: 'customer', component: ListInfoCustomerComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

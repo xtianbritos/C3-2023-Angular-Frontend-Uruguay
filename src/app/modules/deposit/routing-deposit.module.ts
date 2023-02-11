@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'deposit', component: CreateDepositComponent},
+      {path: 'deposit', component: CreateDepositComponent, canActivate: [AuthGuard]},
     ]
   }
 ];
