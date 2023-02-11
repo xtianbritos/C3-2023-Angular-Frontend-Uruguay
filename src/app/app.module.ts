@@ -19,7 +19,7 @@ import { SharedModule } from './modules/shared/shared.module';
   declarations: [
     AppComponent,
     EjercicioComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,11 +29,6 @@ import { SharedModule } from './modules/shared/shared.module';
     MaterialModule,
     SharedModule,
     LoginModule,
-    AccountModule,
-    CustomerModule,
-    DepositModule,
-    TransferModule,
-    SharedModule,
     FormsModule
 
   ],

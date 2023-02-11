@@ -10,12 +10,5 @@ export class MainPageComponent {
 
   constructor(private router: Router) {}
 
-  redirectToSignUp() {
-    this.router.navigate(['signup']);
-  }
-
-  redirectToSignIn() {
-    this.router.navigate(['signin']);
-  }
   
 }

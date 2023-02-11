@@ -28,10 +28,6 @@ export class SinginComponent implements OnInit{
     this.customerApi.getCustomers();
   }
 
-  redirect() {
-    this.router.navigate(['signup']);
-  }
-
   signIn(): void {
     let userExisting: CustomerModel | undefined = this.auth.signedUpUsers.find(user =>
       user.email === this.email &&

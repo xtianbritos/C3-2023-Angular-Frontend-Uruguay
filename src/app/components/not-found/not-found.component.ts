@@ -9,9 +9,5 @@ import { Router } from '@angular/router';
 export class NotFoundComponent {
 
   constructor(private router: Router) {}
-  
-  redirectToMain() {
-    this.router.navigate(['main']);
-  }
 
 }

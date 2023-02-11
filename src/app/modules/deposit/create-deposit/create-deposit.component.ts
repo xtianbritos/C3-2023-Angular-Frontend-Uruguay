@@ -39,7 +39,7 @@ export class CreateDepositComponent implements OnInit{
 
     console.log(newDeposit);
     this.depositApi.postDeposit(newDeposit);
-    this.router.navigate(['list-accounts']);
+    this.router.navigate(['account','list-accounts']);
   }
 
 

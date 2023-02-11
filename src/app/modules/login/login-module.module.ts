@@ -11,6 +11,7 @@ import { MaterialModule } from '../material/material.module';
 import { CustomerApiService } from '../customer/services/customer-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { RoutingLoginModule } from './routing-login.module';
 
 
 
@@ -27,6 +28,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     HttpClientModule,
     RouterModule,
+    RoutingLoginModule,
   ],
   providers: [
     AuthService,

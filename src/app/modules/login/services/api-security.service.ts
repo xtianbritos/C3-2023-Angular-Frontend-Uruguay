@@ -36,7 +36,7 @@ export class ApiSecurityService {
     .post<JwtModel>('http://localhost:3000/security/signin', user, this.options)
     .subscribe(token => {
       localStorage.setItem('jwt', token.jwt);
-      this.router.navigate(['customer']);
+      this.router.navigate(['customer', 'customer']);
     });
   }
   
@@ -54,7 +54,7 @@ export class ApiSecurityService {
           localStorage.removeItem('jwt');
           localStorage.removeItem('current-customer-id');
           
-          this.router.navigate(['signin']);
+          this.router.navigate(['login','signin']);
         }
       });
     }

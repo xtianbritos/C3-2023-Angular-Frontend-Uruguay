@@ -12,12 +12,4 @@ export class ToolbarComponent {
     private router: Router,
   ) {}
 
-  goToListAccounts() {
-    this.router.navigate(['list-accounts']);
-  }
-
-  goToDeposit() {
-    this.router.navigate(['deposit']);
-  }
-
 }

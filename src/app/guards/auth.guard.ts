@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+
 import { Observable } from 'rxjs';
 import { AuthService } from '../modules/login/services/auth.service';
 
@@ -8,17 +9,31 @@ import { AuthService } from '../modules/login/services/auth.service';
 })
 export class AuthGuard implements CanActivate {
   
-  constructor(private auth: AuthService, private router: Router) {
-  }
+  constructor(private auth: AuthService, private router: Router) {}
+
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+      if (!localStorage.getItem('jwt')) {
+        alert('You must login to access')
+        return this.router.navigate(['login','signin']).then(() => false);
+      }
+      return true;
+    }
+    
+
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
       if (!localStorage.getItem('jwt')) {
         alert('You must login to access')
-        return this.router.navigate(['/signin']).then(() => false);
+        return this.router.navigate(['login','signin']).then(() => false);
       }
       return true;
   }
   
 }
+

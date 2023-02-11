@@ -7,6 +7,7 @@ import { AccountApiService } from './services/account-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { RoutingAccountModule } from './routing-account.module';
 
 
 
@@ -21,10 +22,13 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     FormsModule,
     RouterModule,
+    RoutingAccountModule,
   ],
   providers: [AccountApiService],
-  exports: [CreateAccountComponent,
+  exports: [
+    CreateAccountComponent,
     EditAccountComponent,
-    ListAccountComponent]
+    ListAccountComponent,
+  ]
 })
 export class AccountModule { }

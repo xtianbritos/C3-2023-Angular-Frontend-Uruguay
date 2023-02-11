@@ -1,26 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SignedInGuard } from 'src/app/guards/signed-in.guard';
+import { MainPageComponent } from './main-page/main-page.component';
 import { SinginComponent } from './singin/singin.component';
 import { SingupComponent } from './singup/singup.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'signin',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'signin',
-  //   component: SinginComponent
-  // },
-  // {
-  //   path: 'signup',
-  //   component: SingupComponent
-  // },
+  {
+    path: '',
+    children: [
+      {path: 'main', component: MainPageComponent},
+      {path: 'signin', component: SinginComponent}, 
+      {path: 'signup', component: SingupComponent},
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AuthModule {}
+export class RoutingLoginModule {}

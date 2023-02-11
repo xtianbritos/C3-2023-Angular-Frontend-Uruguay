@@ -54,7 +54,7 @@ export class SingupComponent implements OnInit{
 
     this.securityApi.signUp(user);
 
-    this.router.navigate(['signin']);
+    this.router.navigate(['login','signin']);
   }
 
 }

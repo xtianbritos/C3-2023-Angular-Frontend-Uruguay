@@ -16,12 +16,12 @@ import { RouterModule } from '@angular/router';
     exports: [
         ToolbarComponent,
         FooterComponent,
-        RouterModule,
     ],
     imports: [
         CommonModule,
         MaterialModule,
-        LoginModule
+        RouterModule,
+        LoginModule,
     ]
 })
 export class SharedModule { }

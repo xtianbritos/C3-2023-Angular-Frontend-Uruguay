@@ -22,9 +22,5 @@ export class ListInfoCustomerComponent implements OnInit{
   ngOnInit(): void {
     this.api.getCustomers();
   }
-  
-  redirectToMain() {
-    this.router.navigate(['main']);
-  }
 
 }
