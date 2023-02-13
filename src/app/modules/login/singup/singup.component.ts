@@ -54,6 +54,8 @@ export class SingupComponent implements OnInit{
 
     this.securityApi.signUp(user);
 
+    this.customerApi.getCustomers().subscribe(users => {this.auth.signedUpUsers = users});
+
     this.router.navigate(['login','signin']);
   }
 

@@ -24,7 +24,6 @@ export class ListAccountComponent implements OnInit{
   getAccounts() {
     this.accountApi.getAccountsByCustomer().subscribe(accounts => {
       this.listAccounts = accounts;
-      console.log(accounts);
     });
   }
 

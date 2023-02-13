@@ -22,13 +22,9 @@ export class CustomerApiService {
   ) { }
 
 
-  getCustomers(): void{
-    this.http
-    .get<CustomerModel[]>('http://localhost:3000/customer/', this.options)
-    .subscribe(users => {
-      this.auth.signedUpUsers = users;
-      console.log(this.auth.signedUpUsers);
-    });
+  getCustomers(): Observable<CustomerModel[]>{
+    return this.http
+    .get<CustomerModel[]>('http://localhost:3000/customer/', this.options);
   }
 
   postCustomer(customer: Object): void {

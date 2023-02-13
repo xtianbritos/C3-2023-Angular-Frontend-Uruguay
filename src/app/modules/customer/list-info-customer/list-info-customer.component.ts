@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CustomerApiService } from '../services/customer-api.service';
 import { AuthService } from '../../login/services/auth.service';
 import { CustomerModel } from '../../../interfaces/Customer.interface';
@@ -11,16 +10,31 @@ import { CustomerModel } from '../../../interfaces/Customer.interface';
 })
 export class ListInfoCustomerComponent implements OnInit{
 
-  customer: CustomerModel = <CustomerModel>this.auth.signedUpUser;
+  customer: CustomerModel = this.auth.signedUpUser as CustomerModel;
+
+  currentId = localStorage.getItem('current-customer-id');
   
   constructor(
-    private router: Router,
     private api: CustomerApiService,
     private auth: AuthService,
   ) {}
 
   ngOnInit(): void {
-    this.api.getCustomers();
+
+    this.api.getCustomers().subscribe(users => {
+      this.auth.signedUpUsers = users;
+      this.customer = this.findCurrentUser();
+    });
+
+  }
+
+  findCurrentUser(): CustomerModel {
+    let currentUser = this.auth.signedUpUsers.find(user => user.id === this.currentId);
+
+    if(currentUser) {
+      return currentUser
+    }
+    throw new Error('Customer not found');
   }
 
 }

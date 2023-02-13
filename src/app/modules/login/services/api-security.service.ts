@@ -27,7 +27,7 @@ export class ApiSecurityService {
   signUp(user: RegisterModel): void {
     this.http.
     post<JwtModel>('http://localhost:3000/security/signup', user, this.options)
-    .subscribe(token => console.log(token));
+    .subscribe(token => token);
 
     this.customerApi.getCustomers();
   }

@@ -17,8 +17,9 @@ export class SinginComponent implements OnInit{
   email = '';
   password = '';
 
+  allCustomers: CustomerModel[] = [];
+
   constructor(
-    private router: Router,
     private auth: AuthService,
     private customerApi: CustomerApiService,
     private securityApi: ApiSecurityService,
@@ -26,10 +27,13 @@ export class SinginComponent implements OnInit{
 
   ngOnInit(): void {
     this.customerApi.getCustomers();
+
+    this.customerApi.getCustomers().subscribe(users => {this.allCustomers = users});
   }
 
   signIn(): void {
-    let userExisting: CustomerModel | undefined = this.auth.signedUpUsers.find(user =>
+    let userExisting: CustomerModel | undefined = this.allCustomers.find(
+      user =>
       user.email === this.email &&
       user.password === this.password
     );

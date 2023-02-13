@@ -37,7 +37,6 @@ export class CreateDepositComponent implements OnInit{
       amount: this.money
     }
 
-    console.log(newDeposit);
     this.depositApi.postDeposit(newDeposit);
     this.router.navigate(['account','list-accounts']);
   }
