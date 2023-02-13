@@ -1,31 +1,49 @@
 <div class="container">
-    <form>
+  <form [formGroup]="loginForm" (submit)="signIn()">
 
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            name="signin-email"
-            aria-describedby="emailHelp"
-            [(ngModel)]="email">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        aria-describedby="emailHelp"
+        name="signup-email"
+        formControlName="email"
+        >
+
+        <div
+          *ngIf="loginForm.controls['email'].invalid &&
+            (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="loginForm.controls['email'].errors?.['required']">Email is required</div>
+          <div *ngIf="loginForm.controls['email'].errors?.['email']">Email must be a valid email address</div>
         </div>
 
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            name="signin-password"
-            [(ngModel)]="password">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="signup-password"
+        formControlName="password"
+        >
+
+        <div
+          *ngIf="loginForm.controls['password'].invalid &&
+            (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="loginForm.controls['password'].errors?.['required']">Password is required</div>
+          <div *ngIf="loginForm.controls['password'].errors?.['minlength']">Password must be longer than or equal to 5 characters</div>
         </div>
 
-        <button type="button" class="btn btn-primary" (click)="signIn()">Sign in</button>
+    </div>
 
-        <button routerLinkActive="router-link-active" type="button" routerLink="/login/signup" class="btn btn-secondary">
-            Sign up
-        </button>
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Sign in</button>
+    <button routerLinkActive="router-link-active" type="button" routerLink="/login/signup" class="btn btn-success">
+      Sign up
+    </button>
 
-    </form>
+</form>
 </div>
