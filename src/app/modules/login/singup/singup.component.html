@@ -1,5 +1,5 @@
 <div class="container">
-    <form>
+    <form [formGroup]="registerForm" (submit)="signUp()">
 
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -8,8 +8,17 @@
             class="form-control"
             aria-describedby="emailHelp"
             name="signup-email"
-            [(ngModel)]="email"
-            required>
+            formControlName="email"
+            >
+
+            <div
+              *ngIf="registerForm.controls['email'].invalid &&
+                (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="registerForm.controls['email'].errors?.['required']">Email is required</div>
+              <div *ngIf="registerForm.controls['email'].errors?.['email']">Email must be a valid email address</div>
+            </div>
+
         </div>
 
         <div class="mb-3">
@@ -18,8 +27,17 @@
             type="password"
             class="form-control"
             name="signup-password"
-            [(ngModel)]="password"
-            required>
+            formControlName="password"
+            >
+
+            <div
+              *ngIf="registerForm.controls['password'].invalid &&
+                (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="registerForm.controls['password'].errors?.['required']">Password is required</div>
+              <div *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be longer than or equal to 5 characters</div>
+            </div>
+
         </div>
 
         <div class="mb-3">
@@ -27,9 +45,18 @@
           <select
           class="form-select"
           name="signup-account-type"
-          [(ngModel)]="accountTypeSelected">
+          formControlName="accountTypeId"
+          >
             <option *ngFor="let accType of listAccountTypes" [ngValue]="accType.id">{{accType.name}}</option>
           </select>
+
+          <div
+            *ngIf="registerForm.controls['accountTypeId'].invalid &&
+              (registerForm.controls['accountTypeId'].dirty || registerForm.controls['accountTypeId'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="registerForm.controls['accountTypeId'].errors?.['required']">Account type is required</div>
+          </div>
+
         </div>
 
         <div class="mb-3">
@@ -37,9 +64,18 @@
           <select
           class="form-select"
           name="signup-document-type"
-          [(ngModel)]="documentTypeSelected">
+          formControlName="documentTypeId"
+          >
             <option *ngFor="let docType of listDocumentTypes" [ngValue]="docType.id">{{docType.name}}</option>
           </select>
+
+          <div
+            *ngIf="registerForm.controls['documentTypeId'].invalid &&
+              (registerForm.controls['documentTypeId'].dirty || registerForm.controls['documentTypeId'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="registerForm.controls['documentTypeId'].errors?.['required']">Document type is required</div>
+          </div>
+
         </div>
 
         <div class="mb-3">
@@ -48,7 +84,17 @@
             type="text"
             class="form-control"
             name="signup-document"
-            [(ngModel)]="document">
+            formControlName="document"
+            >
+
+            <div
+            *ngIf="registerForm.controls['document'].invalid &&
+              (registerForm.controls['document'].dirty || registerForm.controls['document'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="registerForm.controls['document'].errors?.['required']">Document is required</div>
+            <div *ngIf="registerForm.controls['document'].errors?.['minlength']">Document must have this format: 12345678</div>
+          </div>
+
         </div>
 
         <div class="mb-3">
@@ -57,7 +103,16 @@
             type="text"
             class="form-control"
             name="signup-full-name"
-            [(ngModel)]="fullName">
+            formControlName="fullName"
+            >
+
+            <div
+            *ngIf="registerForm.controls['fullName'].invalid &&
+              (registerForm.controls['fullName'].dirty || registerForm.controls['fullName'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="registerForm.controls['fullName'].errors?.['required']">Full name is required</div>
+          </div>
+
         </div>
 
         <div class="mb-3">
@@ -66,10 +121,19 @@
             type="tel"
             class="form-control"
             name="signup-phone"
-            [(ngModel)]="phone">
+            formControlName="phone"
+            >
+
+            <div
+            *ngIf="registerForm.controls['phone'].invalid &&
+              (registerForm.controls['phone'].dirty || registerForm.controls['phone'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="registerForm.controls['phone'].errors?.['required']">Phone is required</div>
+          </div>
+
         </div>
 
-        <button type="button" class="btn btn-success" (click)="signUp()">Sign up</button>
+        <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Sign up</button>
 
     </form>
 </div>

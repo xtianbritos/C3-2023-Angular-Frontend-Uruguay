@@ -8,6 +8,7 @@ import { RegisterModel } from '../../../interfaces/register.interface';
 import { AccountTypeModel } from 'src/app/interfaces/account-type.model';
 import { AccountApiService } from '../../account/services/account-api.service';
 import { ApiSecurityService } from '../services/api-security.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-singup',
@@ -16,13 +17,13 @@ import { ApiSecurityService } from '../services/api-security.service';
 })
 export class SingupComponent implements OnInit{
   
-  email = '';
-  password = '';
-  fullName = '';
-  document = '';
-  phone = '';
-  accountTypeSelected = ''
-  documentTypeSelected = ''
+  // email = '';
+  // password = '';
+  // fullName = '';
+  // document = '';
+  // phone = '';
+  // accountTypeSelected = ''
+  // documentTypeSelected = ''
   
   listDocumentTypes: DocumentTypeModel[] = [];
   listAccountTypes: AccountTypeModel[] = [];
@@ -33,30 +34,36 @@ export class SingupComponent implements OnInit{
     private customerApi: CustomerApiService,
     private accountApi: AccountApiService,
     private securityApi: ApiSecurityService,
+    private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
     this.customerApi.getDocumentTypes().subscribe(types => {this.listDocumentTypes = types});
     this.accountApi.getAccountTypes().subscribe(types => {this.listAccountTypes = types});
   }
+
+
+  //Reactive sign up form
+  registerForm = this.formBuilder.group({
+    accountTypeId: ['', [Validators.required]],
+    documentTypeId: ['', [Validators.required]],
+    document: ['', [Validators.required, Validators.minLength(8)]],
+    fullName: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    phone: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(5)]],
+  });
   
 
   signUp(): void {
-    let user: RegisterModel = {
-      accountTypeId: this.accountTypeSelected,
-      documentTypeId: this.documentTypeSelected,
-      document: this.document,
-      fullName: this.fullName,
-      email: this.email,
-      phone: this.phone,
-      password: this.password,
-    }
+    let user: RegisterModel = this.registerForm.value as RegisterModel;
 
     this.securityApi.signUp(user);
 
     this.customerApi.getCustomers().subscribe(users => {this.auth.signedUpUsers = users});
 
     this.router.navigate(['login','signin']);
+
   }
 
 }

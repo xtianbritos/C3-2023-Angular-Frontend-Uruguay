@@ -6,7 +6,7 @@ import { SingOutComponent } from './sing-out/sing-out.component';
 import { AuthService } from './services/auth.service';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ApiSecurityService } from './services/api-security.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { CustomerApiService } from '../customer/services/customer-api.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +29,7 @@ import { RoutingLoginModule } from './routing-login.module';
     HttpClientModule,
     RouterModule,
     RoutingLoginModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService,
