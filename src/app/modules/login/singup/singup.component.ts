@@ -17,16 +17,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SingupComponent implements OnInit{
   
-  // email = '';
-  // password = '';
-  // fullName = '';
-  // document = '';
-  // phone = '';
-  // accountTypeSelected = ''
-  // documentTypeSelected = ''
-  
   listDocumentTypes: DocumentTypeModel[] = [];
   listAccountTypes: AccountTypeModel[] = [];
+
+  listDocumentsInUse: string[] = []
+  listEmailsInUse: string[] = []
+  listPhonesInUse: string[] = []
  
   constructor(
     private router: Router,

@@ -47,7 +47,7 @@
           name="signup-account-type"
           formControlName="accountTypeId"
           >
-            <option *ngFor="let accType of listAccountTypes" [ngValue]="accType.id">{{accType.name}}</option>
+            <option *ngFor="let accType of listAccountTypes" [value]="accType.id">{{accType.name}}</option>
           </select>
 
           <div
@@ -66,7 +66,7 @@
           name="signup-document-type"
           formControlName="documentTypeId"
           >
-            <option *ngFor="let docType of listDocumentTypes" [ngValue]="docType.id">{{docType.name}}</option>
+            <option *ngFor="let docType of listDocumentTypes" [value]="docType.id">{{docType.name}}</option>
           </select>
 
           <div

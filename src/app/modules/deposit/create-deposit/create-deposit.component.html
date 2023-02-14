@@ -7,7 +7,7 @@
           class="form-select"
           name="deposit-account-type"
           [(ngModel)]="accountSelected">
-            <option *ngFor="let account of listAccount" [ngValue]="account.id">{{account.id}}</option>
+            <option *ngFor="let account of listAccount" [value]="account.id">{{account.id}}</option>
           </select>
         </div>
 
