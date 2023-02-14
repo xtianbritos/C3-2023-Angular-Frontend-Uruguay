@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
-import { CustomerModel } from 'src/app/interfaces/Customer.interface';
-import { DocumentTypeModel } from '../../../interfaces/Customer.interface';
-import { AccountModel } from '../../../interfaces/account.model';
+import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { GoogleUserModel } from 'src/app/interfaces/google-user.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  userLogged: boolean = false;
+  // userLogged: boolean = false;
   
-  signedUpUsers: CustomerModel[] = [];
+  // signedUpUsers: CustomerModel[] = [];
 
-  signedUpUser: Object = {};
+  // signedUpUser: Object = {};
 
-  documentTypes: DocumentTypeModel[] = [];
+  // documentTypes: DocumentTypeModel[] = [];
 
-  customerAccounts: AccountModel[] = [];
+  // customerAccounts: AccountModel[] = [];
 
-  constructor() { }
+  dataFromGoogle: GoogleUserModel = {};
 
+  constructor(private auth: Auth) { }
 
+  signInGoogle() {
+    return signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
 }

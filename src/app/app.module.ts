@@ -8,12 +8,11 @@ import { MaterialModule } from './modules/material/material.module';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { AccountModule } from './modules/account/account.module';
-import { CustomerModule } from './modules/customer/customer.module';
-import { DepositModule } from './modules/deposit/deposit.module';
 import { LoginModule } from './modules/login/login-module.module';
-import { TransferModule } from './modules/transfer/transfer.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,9 @@ import { SharedModule } from './modules/shared/shared.module';
     MaterialModule,
     SharedModule,
     LoginModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
 
   ],
   providers: [],
