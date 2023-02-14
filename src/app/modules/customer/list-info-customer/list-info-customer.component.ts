@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerApiService } from '../services/customer-api.service';
 import { AuthService } from '../../login/services/auth.service';
 import { CustomerModel } from '../../../interfaces/Customer.interface';
+import { ApiSecurityService } from '../../login/services/api-security.service';
 
 @Component({
   selector: 'app-list-info-customer',
@@ -10,31 +11,25 @@ import { CustomerModel } from '../../../interfaces/Customer.interface';
 })
 export class ListInfoCustomerComponent implements OnInit{
 
-  customer: CustomerModel = this.auth.signedUpUser as CustomerModel;
+  customer: CustomerModel  = {
+    id: '',
+    documentType: {id: '', name: '', state: true},
+    document: '',
+    fullName: '',
+    email: '',
+    phone: 0,
+    password: '',
+    state: false
+  };
 
   currentId = localStorage.getItem('current-customer-id');
-  
+ 
   constructor(
-    private api: CustomerApiService,
-    private auth: AuthService,
+    private customerApi: CustomerApiService,
   ) {}
 
   ngOnInit(): void {
-
-    this.api.getCustomers().subscribe(users => {
-      this.auth.signedUpUsers = users;
-      this.customer = this.findCurrentUser();
-    });
-
-  }
-
-  findCurrentUser(): CustomerModel {
-    let currentUser = this.auth.signedUpUsers.find(user => user.id === this.currentId);
-
-    if(currentUser) {
-      return currentUser
-    }
-    throw new Error('Customer not found');
+    this.customerApi.getCustomerById().subscribe(c => {this.customer = c});
   }
 
 }
