@@ -22,7 +22,7 @@ export class AuthService {
 
   constructor(private auth: Auth) { }
 
-  signInGoogle() {
+  signUpGoogle() {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 }
