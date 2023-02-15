@@ -5,6 +5,8 @@ import { ListTransferComponent } from './list-transfer/list-transfer.component';
 import { CreateTransferComponent } from './create-transfer/create-transfer.component';
 import { EditTransferComponent } from './edit-transfer/edit-transfer.component';
 import { RoutingTransferModule } from './routing-transfer.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,6 +22,9 @@ import { RoutingTransferModule } from './routing-transfer.module';
   imports: [
     CommonModule,
     RoutingTransferModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ListTransferComponent,

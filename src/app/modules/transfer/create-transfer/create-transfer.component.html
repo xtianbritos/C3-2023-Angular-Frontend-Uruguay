@@ -1,1 +1,73 @@
-<p>create-transfer works!</p>
+<div class="container">
+    <form [formGroup]="transferForm" (submit)="createTransfer()">
+
+        <div class="mb-3">
+          <label for="transfer-outcome-account" class="form-label">Outcome account</label>
+          <select
+          class="form-select"
+          name="transfer-outcome-account"
+          formControlName="outcome">
+            <option *ngFor="let account of listAccount" [value]="account.id">{{account.id}}</option>
+          </select>
+
+          <div
+            *ngIf="transferForm.controls['outcome'].invalid &&
+              (transferForm.controls['outcome'].dirty || transferForm.controls['outcome'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="transferForm.controls['outcome'].errors?.['required']">Outcome account is required</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="transfer-income-account" class="form-label">Income account</label>
+            <select
+            class="form-select"
+            name="transfer-income-account"
+            formControlName="income">
+              <option *ngFor="let account of listAccount" [value]="account.id">{{account.id}}</option>
+            </select>
+  
+            <div
+              *ngIf="transferForm.controls['income'].invalid &&
+                (transferForm.controls['income'].dirty || transferForm.controls['income'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="transferForm.controls['income'].errors?.['required']">Income account is required</div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="transfer-amount" class="form-label">Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="transfer-amount"
+            formControlName="amount">
+
+            <div
+              *ngIf="transferForm.controls['amount'].invalid &&
+                (transferForm.controls['amount'].dirty || transferForm.controls['amount'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="transferForm.controls['amount'].errors?.['required']">Amount is required</div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="transfer-reason" class="form-label">Reason</label>
+            <input
+              type="text"
+              class="form-control"
+              name="transfer-reason"
+              formControlName="reason">
+  
+              <div
+                *ngIf="transferForm.controls['reason'].invalid &&
+                  (transferForm.controls['reason'].dirty || transferForm.controls['reason'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="transferForm.controls['reason'].errors?.['required']">Reason is required</div>
+              </div>
+          </div>
+
+        <button type="submit" class="btn btn-warning" [disabled]="transferForm.invalid">Transfer</button>
+
+    </form>
+</div>
