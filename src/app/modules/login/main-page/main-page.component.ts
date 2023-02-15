@@ -43,8 +43,6 @@ export class MainPageComponent implements OnInit{
       this.auth.dataFromGoogle.phoneNumber = response.user.phoneNumber;
       this.auth.dataFromGoogle.photoURL = response.user.photoURL;
       
-      console.log(response);
-
       this.router.navigate(['login','signup']);
     });
   }
@@ -57,7 +55,6 @@ export class MainPageComponent implements OnInit{
       try {
         this.customerApi.getCustomerByEmail()
         .subscribe(customer => {
-          console.log(customer);
           this.myCustomer = customer;
   
           alert('User signed in successfully')
@@ -68,6 +65,7 @@ export class MainPageComponent implements OnInit{
           this.securityApi.signIn(user);
       
           localStorage.setItem("current-customer-id", this.myCustomer.id);
+          
         });
         
       } catch (error) {

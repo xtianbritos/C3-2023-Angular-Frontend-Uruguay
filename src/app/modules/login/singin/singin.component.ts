@@ -54,7 +54,7 @@ export class SinginComponent implements OnInit{
       password: userExisting.password
     }
     this.securityApi.signIn(user);
-
+        
     localStorage.setItem("current-customer-id", userExisting.id);
   }
 

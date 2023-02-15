@@ -1,3 +1,4 @@
-<app-toolbar></app-toolbar>
+<app-toolbar *ngIf="!userState"></app-toolbar>
+<button class="btn btn-info" type="button" (click)="changeState()">Hide/Show navbar</button>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
