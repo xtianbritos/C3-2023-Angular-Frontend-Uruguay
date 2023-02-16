@@ -53,9 +53,10 @@ export class SinginComponent implements OnInit{
       username: userExisting.email,
       password: userExisting.password
     }
-    this.securityApi.signIn(user);
-        
+    
     localStorage.setItem("current-customer-id", userExisting.id);
+    
+    this.securityApi.signIn(user);
   }
 
 }

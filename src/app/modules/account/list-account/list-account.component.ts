@@ -12,17 +12,14 @@ export class ListAccountComponent implements OnInit{
 
   listAccounts: AccountModel[] = [];
 
+  currentCustomerId = localStorage.getItem('current-customer-id');
+
   constructor(
-    private auth: AuthService,
     private accountApi: AccountApiService,
   ) {}
 
   ngOnInit(): void {
-    this.getAccounts();
-  }
-
-  getAccounts() {
-    this.accountApi.getAccountsByCustomer().subscribe(accounts => {
+    this.accountApi.getAccountsByCustomer(this.currentCustomerId!).subscribe(accounts => {
       this.listAccounts = accounts;
     });
   }

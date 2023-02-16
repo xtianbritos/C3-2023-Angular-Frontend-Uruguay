@@ -65,6 +65,7 @@ export class MainPageComponent implements OnInit{
           this.securityApi.signIn(user);
       
           localStorage.setItem("current-customer-id", this.myCustomer.id);
+          localStorage.setItem("google-signedin", "true");
           
         });
         

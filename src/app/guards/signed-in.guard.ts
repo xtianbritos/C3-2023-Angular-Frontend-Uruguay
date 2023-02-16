@@ -15,7 +15,7 @@ export class SignedInGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
       if (localStorage.getItem('jwt')) {
-        return this.router.navigate(['customer','customer']).then(() => false);
+        return this.router.navigate(['customer']).then(() => false);
       }
       return true;
   }

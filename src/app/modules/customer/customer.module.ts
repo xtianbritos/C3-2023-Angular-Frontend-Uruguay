@@ -4,7 +4,7 @@ import { ListInfoCustomerComponent } from './list-info-customer/list-info-custom
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { CustomerApiService } from './services/customer-api.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../login/services/auth.service';
 import { RoutingCustomerModule } from './routing-customer.module';
 
@@ -20,6 +20,7 @@ import { RoutingCustomerModule } from './routing-customer.module';
     HttpClientModule,
     FormsModule,
     RoutingCustomerModule,
+    ReactiveFormsModule,
   ],
   providers: [
     CustomerApiService,

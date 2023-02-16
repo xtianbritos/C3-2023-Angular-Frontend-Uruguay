@@ -6,6 +6,7 @@ import { JwtModel } from '../../../interfaces/jwt.interface';
 import { LoginModel } from '../../../interfaces/logininterface';
 import { CustomerApiService } from '../../customer/services/customer-api.service';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class ApiSecurityService {
   constructor(
     private http: HttpClient,
     private customerApi: CustomerApiService,
+    private authService: AuthService,
     private router: Router,
   ) { }
 
@@ -36,7 +38,7 @@ export class ApiSecurityService {
     .post<JwtModel>('http://localhost:3000/security/signin', user, this.options)
     .subscribe(token => {
       localStorage.setItem('jwt', token.jwt);
-      this.router.navigate(['customer', 'customer']);
+      this.router.navigate(['customer']);
     });
   }
   
@@ -51,6 +53,8 @@ export class ApiSecurityService {
       this.http.post<boolean>('http://localhost:3000/security/signout', token, this.options)
       .subscribe(res => {
         if(res) {
+
+          this.authService.signOutGoogle();
           localStorage.removeItem('jwt');
           localStorage.removeItem('current-customer-id');
           

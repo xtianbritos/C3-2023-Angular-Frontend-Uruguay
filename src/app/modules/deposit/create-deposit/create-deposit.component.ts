@@ -19,7 +19,7 @@ export class CreateDepositComponent implements OnInit{
   
   accountSelected = ''
   
-
+  currentCustomerId = localStorage.getItem('current-customer-id');
 
   constructor(
     private accountApi: AccountApiService,
@@ -28,7 +28,7 @@ export class CreateDepositComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.accountApi.getAccountsByCustomer().subscribe(types => {this.listAccount = types});
+    this.accountApi.getAccountsByCustomer(this.currentCustomerId!).subscribe(types => {this.listAccount = types});
   }
 
   createDeposit(): void {

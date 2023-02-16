@@ -11,15 +11,12 @@ import { CustomerModel } from '../../../interfaces/Customer.interface';
 })
 export class AccountApiService {
 
-  customerId = localStorage.getItem("current-customer-id");
-
   constructor(
     private http: HttpClient,
-    private auth: AuthService,
   ) { }
 
-  getAccountsByCustomer(): Observable<AccountModel[]> {
-    return this.http.get<AccountModel[]>('http://localhost:3000/account/customer/'+this.customerId);
+  getAccountsByCustomer(customerId: string): Observable<AccountModel[]> {
+    return this.http.get<AccountModel[]>('http://localhost:3000/account/customer/'+customerId);
   }
 
   getAccountTypes(): Observable<AccountTypeModel[]> {

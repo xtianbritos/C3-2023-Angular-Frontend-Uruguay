@@ -1,1 +1,82 @@
-<p>edit-customer works!</p>
+<div class="container">
+    <form [formGroup]="editForm" (submit)="edit()">
+
+        <div class="mb-3">
+          <label for="edit-customer-document-type" class="form-label">Document type</label>
+          <select
+          class="form-select"
+          name="edit-customer-document-type"
+          formControlName="documentType"
+          >
+            <option *ngFor="let docType of listDocumentTypes" [value]="docType.id">{{docType.name}}</option>
+          </select>
+
+          <div
+            *ngIf="editForm.controls['documentType'].invalid &&
+              (editForm.controls['documentType'].dirty || editForm.controls['documentType'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="editForm.controls['documentType'].errors?.['required']">Document type is required</div>
+          </div>
+
+        </div>
+
+        <div class="mb-3">
+          <label for="edit-customer-document" class="form-label">Document</label>
+          <input
+            type="text"
+            class="form-control"
+            name="edit-customer-document"
+            formControlName="document"
+            >
+
+            <div
+            *ngIf="editForm.controls['document'].invalid &&
+              (editForm.controls['document'].dirty || editForm.controls['document'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="editForm.controls['document'].errors?.['required']">Document is required</div>
+            <div *ngIf="editForm.controls['document'].errors?.['minlength']">Document must have this format: 12345678</div>
+          </div>
+
+        </div>
+
+        <div class="mb-3">
+          <label for="edit-customer-full-name" class="form-label">Full name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="edit-customer-full-name"
+            formControlName="fullName"
+            >
+
+            <div
+            *ngIf="editForm.controls['fullName'].invalid &&
+              (editForm.controls['fullName'].dirty || editForm.controls['fullName'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="editForm.controls['fullName'].errors?.['required']">Full name is required</div>
+          </div>
+
+        </div>
+
+        <div class="mb-3">
+          <label for="edit-customer-phone" class="form-label">Phone</label>
+          <input
+            type="tel"
+            class="form-control"
+            name="edit-customer-phone"
+            formControlName="phone"
+            >
+
+            <div
+            *ngIf="editForm.controls['phone'].invalid &&
+              (editForm.controls['phone'].dirty || editForm.controls['phone'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="editForm.controls['phone'].errors?.['required']">Phone is required</div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="editForm.invalid">Save</button>
+
+    </form>
+</div>
+

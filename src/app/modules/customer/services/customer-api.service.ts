@@ -4,6 +4,7 @@ import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { AuthService } from '../../login/services/auth.service';
 import { DocumentTypeModel } from '../../../interfaces/Customer.interface';
 import { Observable } from 'rxjs';
+import { EditCustomerModel } from 'src/app/interfaces/edit-customer.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,18 @@ export class CustomerApiService {
     .subscribe(user => user);
 
     this.getCustomers();
+  }
+
+  putCustomer(customerEdited: Object): void {
+    this.http.put('http://localhost:3000/customer/'+localStorage.getItem('current-customer-id'),
+    customerEdited, this.options)
+    .subscribe(user => user);
+  }
+
+  patchCustomer(customerEdited: EditCustomerModel): void {
+    this.http.patch('http://localhost:3000/customer/'+localStorage.getItem('current-customer-id'),
+    customerEdited, this.options)
+    .subscribe(user => user);
   }
 
   getDocumentTypes(): Observable<DocumentTypeModel[]> {

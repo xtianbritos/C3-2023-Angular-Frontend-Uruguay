@@ -19,21 +19,46 @@
         </div>
 
         <div class="mb-3">
-            <label for="transfer-income-account" class="form-label">Income account</label>
-            <select
-            class="form-select"
-            name="transfer-income-account"
-            formControlName="income">
-              <option *ngFor="let account of listAccount" [value]="account.id">{{account.id}}</option>
-            </select>
-  
+          <label for="transfer-document-income" class="form-label">Document of income custoner</label>
+          <input
+            type="text"
+            class="form-control"
+            name="transfer-document-income"
+            formControlName="documentIncome">
+
             <div
-              *ngIf="transferForm.controls['income'].invalid &&
-                (transferForm.controls['income'].dirty || transferForm.controls['income'].touched)"
+              *ngIf="transferForm.controls['documentIncome'].invalid &&
+                (transferForm.controls['documentIncome'].dirty || transferForm.controls['documentIncome'].touched)"
               class="alert alert-danger">
-              <div *ngIf="transferForm.controls['income'].errors?.['required']">Income account is required</div>
+              <div *ngIf="transferForm.controls['documentIncome'].errors?.['required']">Document of income custoner is required</div>
             </div>
+            
+            <div *ngIf="errorMessage != undefined" class="alert alert-danger">{{errorMessage}}</div>
+
+
+            <span type="button" class="btn btn-debug" *ngIf="transferForm.controls['documentIncome'].valid" (click)="searchAccountsByDocument()" >Search customer</span>
         </div>
+
+        <span *ngIf="incomeCustomerSearched === false else incomeAccounts" ></span>
+
+        <ng-template #incomeAccounts>
+          <div class="mb-3" *ngIf="transferForm.controls['documentIncome'].valid">
+              <label for="transfer-income-account" class="form-label">Income account</label>
+              <select
+              class="form-select"
+              name="transfer-income-account"
+              formControlName="income">
+                <option *ngFor="let account of listAccountIncome" [value]="account.id">{{account.id}}</option>
+              </select>
+    
+              <div
+                *ngIf="transferForm.controls['income'].invalid &&
+                  (transferForm.controls['income'].dirty || transferForm.controls['income'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="transferForm.controls['income'].errors?.['required']">Income account is required</div>
+              </div>
+          </div>
+        </ng-template>
 
         <div class="mb-3">
           <label for="transfer-amount" class="form-label">Amount</label>
