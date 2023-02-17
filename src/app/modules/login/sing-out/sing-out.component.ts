@@ -14,4 +14,9 @@ export class SingOutComponent {
     this.securityApi.signOut();
   }
 
+  userIsLogged(): boolean {
+    if(localStorage.getItem('jwt') === null) return false;
+    return true;
+  }
+
 }
