@@ -7,13 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../login/services/auth.service';
 import { RoutingCustomerModule } from './routing-customer.module';
-
+import { MovementsComponent } from './movements/movements.component';
+import { DepositModule } from '../deposit/deposit.module';
+import { TransferModule } from '../transfer/transfer.module';
 
 
 @NgModule({
   declarations: [
     ListInfoCustomerComponent,
-    EditCustomerComponent
+    EditCustomerComponent,
+    MovementsComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,8 @@ import { RoutingCustomerModule } from './routing-customer.module';
     FormsModule,
     RoutingCustomerModule,
     ReactiveFormsModule,
+    DepositModule,
+    TransferModule,
   ],
   providers: [
     CustomerApiService,
@@ -28,6 +33,8 @@ import { RoutingCustomerModule } from './routing-customer.module';
     AuthService],
   exports: [
     ListInfoCustomerComponent,
-    EditCustomerComponent]
+    EditCustomerComponent,
+    MovementsComponent,
+  ]
 })
 export class CustomerModule { }

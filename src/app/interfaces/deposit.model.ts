@@ -7,3 +7,11 @@ export interface DepositModel {
     dateTime?: Date | number;
     deletedAt?: Date | number;
 }
+
+export interface RealDepositModel {
+    id?: string;
+    account: AccountModel;
+    amount: number;
+    dateTime: number;
+    deletedAt?: Date | number;
+}

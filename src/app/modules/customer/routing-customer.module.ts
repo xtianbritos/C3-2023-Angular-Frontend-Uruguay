@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { ListInfoCustomerComponent } from './list-info-customer/list-info-customer.component';
+import { MovementsComponent } from './movements/movements.component';
 
 const routes: Routes = [
   {path: '', component: ListInfoCustomerComponent, canActivate: [AuthGuard]},
   {path: 'edit', component: EditCustomerComponent, canActivate: [AuthGuard]},
+  {path: 'movements', component: MovementsComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

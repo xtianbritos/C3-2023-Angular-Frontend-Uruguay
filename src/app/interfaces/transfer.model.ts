@@ -9,3 +9,13 @@ export interface TransferModel {
     dateTime?: Date | number;
     deletedAt?: Date | number;
 }
+
+export interface RealTransferModel {
+    id?: string;
+    outcome:AccountModel;
+    income: AccountModel;
+    amount: number;
+    reason: string;
+    dateTime: number;
+    deletedAt?: Date | number;
+}
