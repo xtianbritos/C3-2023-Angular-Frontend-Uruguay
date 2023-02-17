@@ -11,7 +11,7 @@
     <button class="btn btn-warning" routerLink="transfer">Transfer</button>
     <button class="btn btn-info" routerLink="customer/movements">Movements</button>
 
-    <app-sing-out></app-sing-out>
+    <app-sing-out  *ngIf="userIsLogged()"></app-sing-out>
 
   </mat-toolbar>
 </p>

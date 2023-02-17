@@ -12,4 +12,9 @@ export class ToolbarComponent {
     private router: Router,
   ) {}
 
+  userIsLogged(): boolean {
+    if(localStorage.getItem('jwt') === null) return false;
+    return true;
+  }
+
 }

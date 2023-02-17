@@ -34,13 +34,14 @@ export class ListDepositComponent {
   ngOnInit(): void {
     this.depositApi.getAllDeposits().subscribe(deposits => {
       this.listAllDeposits = deposits as RealDepositModel[];
+
+      this.customerApi.getCustomerById().subscribe(customer => {
+        this.currentCustomer = customer;
+        
+        this.findCustomerDeposits();
+      });
     });
     
-    this.customerApi.getCustomerById().subscribe(customer => {
-      this.currentCustomer = customer;
-      
-      this.findCustomerDeposits();
-    })
   }
 
   convertDateToShow(dateNumber: number): string {
