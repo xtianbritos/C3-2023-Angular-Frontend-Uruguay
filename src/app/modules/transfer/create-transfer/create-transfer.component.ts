@@ -15,16 +15,12 @@ import { TransferApiService } from '../services/transfer-api.service';
 })
 export class CreateTransferComponent {
 
-  money: number = 0;
-
   listOfCustomers:CustomerModel[] = [];
   
   listAccount:AccountModel[] = [];
 
   listAccountIncome:AccountModel[] | undefined = undefined;
   
-  accountSelected = ''
-
   incomeCustomerSearched: boolean = false;
 
   errorMessage: string | undefined = undefined;

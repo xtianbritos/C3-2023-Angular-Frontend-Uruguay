@@ -1,26 +1,40 @@
 <div class="container">
-    <form>
+    <form [formGroup]="depositForm" (submit)="createDeposit()">
 
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Account</label>
           <select
           class="form-select"
           name="deposit-account-type"
-          [(ngModel)]="accountSelected">
+          formControlName="account">
             <option *ngFor="let account of listAccount" [value]="account.id">{{account.id}}</option>
           </select>
+
+          <div
+            *ngIf="depositForm.controls['account'].invalid &&
+              (depositForm.controls['account'].dirty || depositForm.controls['account'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="depositForm.controls['account'].errors?.['required']">Account is required</div>
+          </div>
         </div>
 
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Money</label>
+          <label for="exampleInputPassword1" class="form-label">Amount</label>
           <input
             type="number"
             class="form-control"
             name="deposit-money"
-            [(ngModel)]="money">
+            formControlName="amount">
+
+            <div
+            *ngIf="depositForm.controls['amount'].invalid &&
+              (depositForm.controls['amount'].dirty || depositForm.controls['amount'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="depositForm.controls['amount'].errors?.['required']">Amount is required</div>
+          </div>
         </div>
 
-        <button type="button" class="btn btn-success" (click)="createDeposit()">Deposit</button>
+        <button type="submit" class="btn btn-secondary" [disabled]="depositForm.invalid">Deposit</button>
 
     </form>
 </div>

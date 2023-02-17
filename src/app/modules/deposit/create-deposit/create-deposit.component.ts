@@ -5,6 +5,7 @@ import { AccountApiService } from '../../account/services/account-api.service';
 import { Router } from '@angular/router';
 import { DepositApiService } from '../services/deposit-api.service';
 import { DepositModel } from '../../../interfaces/deposit.model';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-deposit',
@@ -12,12 +13,8 @@ import { DepositModel } from '../../../interfaces/deposit.model';
   styleUrls: ['./create-deposit.component.scss']
 })
 export class CreateDepositComponent implements OnInit{
-  
-  money: number = 0;
-  
+    
   listAccount:AccountModel[] = []
-  
-  accountSelected = ''
   
   currentCustomerId = localStorage.getItem('current-customer-id');
 
@@ -25,16 +22,23 @@ export class CreateDepositComponent implements OnInit{
     private accountApi: AccountApiService,
     private router: Router,
     private depositApi: DepositApiService,
+    private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
     this.accountApi.getAccountsByCustomer(this.currentCustomerId!).subscribe(types => {this.listAccount = types});
   }
 
+  //Reactive deposit form
+  depositForm = this.formBuilder.group({
+    amount: [0, [Validators.required]],
+    account: ['', [Validators.required]]
+  });
+
   createDeposit(): void {
     let newDeposit:DepositModel = {
-      account: this.accountSelected,
-      amount: this.money
+      account: this.depositForm.value.account!,
+      amount: this.depositForm.value.amount!
     }
 
     this.depositApi.postDeposit(newDeposit);
