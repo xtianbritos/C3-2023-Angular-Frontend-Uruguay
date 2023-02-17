@@ -7,6 +7,9 @@ import { CreateDepositComponent } from './create-deposit/create-deposit.componen
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoutingDepositModule } from './routing-deposit.module';
+import { MaterialModule } from '../material/material.module';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 
@@ -21,6 +24,7 @@ import { RoutingDepositModule } from './routing-deposit.module';
     FormsModule,
     HttpClientModule,
     RoutingDepositModule,
+    MatPaginatorModule,
   ],
   providers: [DepositApiService],
   exports: [

@@ -33,17 +33,15 @@ export class ListTransferComponent {
 
   ngOnInit(): void {
     this.transferApi.getAllTransfers().subscribe(transfers => {
-      console.log(transfers);
       this.listAllTransfers = transfers as RealTransferModel[];
+
+      this.customerApi.getCustomerById().subscribe(customer => {
+        this.currentCustomer = customer;
+        
+        this.findCustomerTransfers();
+      });
     });
     
-    this.customerApi.getCustomerById().subscribe(customer => {
-      this.currentCustomer = customer;
-
-      console.log(this.listAllTransfers);
-      
-      this.findCustomerTransfers();
-    })
   }
 
   convertDateToShow(dateNumber: number): string {
