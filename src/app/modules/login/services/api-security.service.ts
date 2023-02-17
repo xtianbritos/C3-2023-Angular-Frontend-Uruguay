@@ -58,7 +58,7 @@ export class ApiSecurityService {
           localStorage.removeItem('jwt');
           localStorage.removeItem('current-customer-id');
           
-          this.router.navigate(['login','signin']);
+          this.router.navigate(['login','main']);
         }
       });
     }
