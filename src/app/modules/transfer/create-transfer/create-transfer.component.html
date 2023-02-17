@@ -73,6 +73,7 @@
                 (transferForm.controls['amount'].dirty || transferForm.controls['amount'].touched)"
               class="alert alert-danger">
               <div *ngIf="transferForm.controls['amount'].errors?.['required']">Amount is required</div>
+              <div *ngIf="transferForm.controls['amount'].errors?.['min']">Amount must be greater than zero</div>
             </div>
         </div>
 

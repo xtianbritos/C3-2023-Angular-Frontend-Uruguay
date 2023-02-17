@@ -46,7 +46,7 @@ export class CreateTransferComponent {
     documentIncome: ['', [Validators.required]],
     income: ['', [Validators.required]],
     reason: ['', [Validators.required]],
-    amount: [0, [Validators.required]],
+    amount: [0, [Validators.required, Validators.min(1)]],
   });
 
 

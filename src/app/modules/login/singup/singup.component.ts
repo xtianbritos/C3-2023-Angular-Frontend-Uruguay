@@ -16,12 +16,6 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./singup.component.scss']
 })
 export class SingupComponent implements OnInit{
-
-  // email = '';
-  // password = '';
-  // document = '';
-  // fullname = '';
-  // phone ='';
   
   listDocumentTypes: DocumentTypeModel[] = [];
   listAccountTypes: AccountTypeModel[] = [];
@@ -62,10 +56,7 @@ export class SingupComponent implements OnInit{
 
     this.securityApi.signUp(user);
 
-    // this.customerApi.getCustomers().subscribe(users => {this.auth.signedUpUsers = users});
-
-    this.router.navigate(['login','signin']);
-
+    this.router.navigate(['login','main']);
   }
 
 }

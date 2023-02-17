@@ -31,6 +31,7 @@
               (depositForm.controls['amount'].dirty || depositForm.controls['amount'].touched)"
             class="alert alert-danger">
             <div *ngIf="depositForm.controls['amount'].errors?.['required']">Amount is required</div>
+            <div *ngIf="depositForm.controls['amount'].errors?.['min']">Amount must be greater than zero</div>
           </div>
         </div>
 

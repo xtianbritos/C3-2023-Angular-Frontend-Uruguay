@@ -31,7 +31,7 @@ export class CreateDepositComponent implements OnInit{
 
   //Reactive deposit form
   depositForm = this.formBuilder.group({
-    amount: [0, [Validators.required]],
+    amount: [0, [Validators.required, Validators.min(1)]],
     account: ['', [Validators.required]]
   });
 
